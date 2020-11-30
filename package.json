@@ -7,7 +7,7 @@
   "author": "iColtz",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts"
+    "dev": "ts-node-dev --respawn --transpile-only ./src/bot.ts"
   },
   "devDependencies": {
     "@types/node": "^14.14.10",
