@@ -1,6 +1,5 @@
 import { Client, Collection, Message } from 'discord.js';
 import { CommandRegistry } from '../struct/registries/export/RegistryIndex';
-import { CommandOptions } from '../types/Options';
 import 'dotenv/config';
 
 class Bot extends Client {
