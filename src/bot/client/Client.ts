@@ -1,4 +1,4 @@
-import { Client } from 'discord.js';
+import { Client, Message } from 'discord.js';
 import 'dotenv/config';
 
 class Bot extends Client {
@@ -16,7 +16,7 @@ class Bot extends Client {
       console.log('Ready!');
     });
 
-    this.on('message', (message) => {
+    this.on('message', (message: Message) => {
       if (message.content === this.prefix + 'ping') {
         message.reply('Pong!')
       }
