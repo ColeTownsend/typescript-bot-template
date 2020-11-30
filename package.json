@@ -1,0 +1,9 @@
+{
+  "name": "typescript-bot-template",
+  "version": "1.0.0",
+  "description": "Discord bot template written with typescript.",
+  "main": "./src/bot.ts",
+  "repository": "https://github.com/iColtz/typescript-bot-template",
+  "author": "iColtz",
+  "license": "MIT"
+}
