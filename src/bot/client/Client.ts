@@ -42,7 +42,6 @@ class Bot extends Client {
   public start() {
     super.login(process.env.BOT_TOKEN);
     CommandRegistry(this);
-    console.log(this.commands);
   }
 }
 
