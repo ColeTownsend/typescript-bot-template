@@ -6,6 +6,9 @@
   "repository": "https://github.com/iColtz/typescript-bot-template",
   "author": "iColtz",
   "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts"
+  },
   "dependencies": {
     "ts-node-dev": "^1.0.0",
     "tslint-config-fire": "^1.0.1",
