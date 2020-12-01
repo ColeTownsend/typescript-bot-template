@@ -7,12 +7,16 @@ abstract class Command {
 
   public description: any;
 
+  public ownerOnly: boolean;
+
   public abstract client: Bot;
 
   constructor(options: CommandOptions) {
     this.name = options.name;
 
     this.description = options?.description;
+
+    this.ownerOnly = options.ownerOnly ?? false;
   }
 
   public abstract exec(msg: Message, args: string[]): void;
