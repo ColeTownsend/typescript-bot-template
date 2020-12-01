@@ -21,6 +21,7 @@ abstract class MessageEvent extends Event {
       }
       if (message.channel instanceof TextChannel) {
         const userPermissions: PermissionString[] = command.userPermissions;
+        const clientPermissions: PermissionString[] = command.clientPermissions;
         const missingPermissions: Array<PermissionString> = new Array;
         if (userPermissions.length) {
           for (let i = 0; i < userPermissions.length; i++) {
@@ -31,6 +32,17 @@ abstract class MessageEvent extends Event {
           }
           if (missingPermissions.length) {
             return message.channel.send(`Your missing these required permissions: ${missingPermissions.join(', ')}`);
+          }
+        }
+        if (clientPermissions.length) {
+          for (let i = 0; i < clientPermissions.length; i++) {
+            const hasPermission = message.guild?.me?.hasPermission(clientPermissions[i]);
+            if (!hasPermission) {
+              missingPermissions.push(clientPermissions[i]);
+            }
+          }
+          if (missingPermissions.length) {
+            return message.channel.send(`I\'m missing these required permissions: ${missingPermissions.join(', ')}`);
           }
         }
       }
