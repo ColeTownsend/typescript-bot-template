@@ -12,7 +12,7 @@ abstract class Command {
     this.description = options?.description;
   }
 
-  public abstract exec(msg: Message, args: string[]): Promise<any>;
+  public abstract exec(msg: Message, args: string[]): void;
 }
 
 export default Command;
