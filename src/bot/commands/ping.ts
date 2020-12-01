@@ -1,9 +1,12 @@
 import Command from '../struct/Command';
 import { Message } from 'discord.js';
 
-class PingCommand extends Command {
+abstract class PingCommand extends Command {
   constructor() {
-    super('ping');
+    super({
+      name: 'ping',
+      description: 'Pong!',
+    });
   }
 
   exec(message: Message, args: string[]) {
