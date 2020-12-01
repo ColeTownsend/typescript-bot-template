@@ -6,6 +6,7 @@ export interface CommandOptions {
   description: any,
   ownerOnly?: boolean,
   userPermissions?: PermissionString[],
+  clientPermissions?: PermissionString[],
 };
 
 export interface EventOptions {
