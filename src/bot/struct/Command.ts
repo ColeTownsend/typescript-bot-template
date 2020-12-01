@@ -1,13 +1,16 @@
 import { CommandOptions } from '../types/Options';
 import { Message } from 'discord.js';
+import Bot from '../client/Client';
 
 abstract class Command {
   public name: string;
 
   public description: any;
 
-  constructor(name: string, options?: CommandOptions) {
-    this.name = name;
+  public abstract client: Bot;
+
+  constructor(options: CommandOptions) {
+    this.name = options.name;
 
     this.description = options?.description;
   }
