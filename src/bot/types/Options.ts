@@ -1,10 +1,10 @@
 export interface CommandOptions {
   name: string,
   description: any,
-  ownerOnly?: boolean | false,
+  ownerOnly?: boolean,
 };
 
 export interface EventOptions {
   name: string,
-  type?: boolean | false,
+  type?: boolean,
 };
