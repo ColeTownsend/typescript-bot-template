@@ -20,16 +20,12 @@ class Bot extends Client {
     this.commands = new Collection();
 
     this.events = new Collection();
-
-    this.on('ready', () => {
-      console.log('Ready!');
-    });
   }
 
   public start() {
-    super.login(process.env.BOT_TOKEN);
     CommandRegistry(this);
     EventRegistry(this);
+    super.login(process.env.BOT_TOKEN);
   }
 }
 
