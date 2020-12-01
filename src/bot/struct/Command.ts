@@ -5,6 +5,8 @@ import Bot from '../client/Client';
 abstract class Command {
   public name: string;
 
+  public aliases: string[];
+
   public description: any;
 
   public ownerOnly: boolean;
@@ -13,6 +15,8 @@ abstract class Command {
 
   constructor(options: CommandOptions) {
     this.name = options.name;
+
+    this.aliases = options.aliases ?? [];
 
     this.description = options?.description;
 
