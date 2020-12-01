@@ -1,5 +1,6 @@
 export interface CommandOptions {
   name: string,
+  aliases?: string[],
   description: any,
   ownerOnly?: boolean,
 };
