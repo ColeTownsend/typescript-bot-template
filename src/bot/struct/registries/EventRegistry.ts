@@ -9,7 +9,7 @@ const registerEvents: Function = (client: Bot) => {
     const event: Event = new (require(file).default);
     event.client = client;
     client.events.set(event.name, event);
-    client.on(event.name, (...args) => event.exec(...args));
+    client.on(event.name, (...args: any[]) => event.exec(...args));
   });
 }
 
