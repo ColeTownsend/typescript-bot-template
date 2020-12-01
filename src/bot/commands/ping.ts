@@ -5,6 +5,7 @@ abstract class PingCommand extends Command {
   constructor() {
     super({
       name: 'ping',
+      aliases: ['p'],
       description: 'Pong!',
     });
   }
