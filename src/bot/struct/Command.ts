@@ -13,6 +13,8 @@ abstract class Command {
 
   public userPermissions: PermissionString[];
 
+  public clientPermissions: PermissionString[];
+
   public abstract client: Bot;
 
   constructor(options: CommandOptions) {
@@ -25,6 +27,8 @@ abstract class Command {
     this.ownerOnly = options.ownerOnly ?? false;
 
     this.userPermissions = options.userPermissions ?? [];
+
+    this.clientPermissions = options.clientPermissions ?? [];
   }
 
   public abstract exec(msg: Message, args: string[]): void;
