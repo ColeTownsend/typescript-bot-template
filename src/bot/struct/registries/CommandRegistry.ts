@@ -5,9 +5,9 @@ import { resolve } from 'path';
 
 const registerCommands: Function = (client: Bot) => {
   const commandFiles = sync(resolve('src/bot/commands/**/*'));
-  commandFiles.forEach(file => {
-    const commandDefault: { default: any } = require(file);
-    const command: Command = new commandDefault.default();
+  commandFiles.forEach((file) => {
+    const command: Command = new (require(file).default);
+    command.client = client;
     client.commands.set(command.name, command);
   });
 }
