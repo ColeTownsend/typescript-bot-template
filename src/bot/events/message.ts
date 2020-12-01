@@ -1,7 +1,6 @@
 import Event from '../struct/Event';
 import { Message } from 'discord.js';
 import 'dotenv/config';
-import Command from '../struct/Command';
 
 abstract class MessageEvent extends Event {
   constructor() {
