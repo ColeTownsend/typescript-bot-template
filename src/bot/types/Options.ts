@@ -1,4 +1,5 @@
 export interface CommandOptions {
+  name: string,
   description: any,
 };
 
