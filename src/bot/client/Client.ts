@@ -8,7 +8,7 @@ class Bot extends Client {
 
   public commands = new Collection<string, CommandOptions>();
 
-  public cooldowns = new Collection<string, Collection>();
+  public cooldowns = new Collection<string, Collection<string, number>>();
 
   public events = new Collection<string, EventOptions>();
 
