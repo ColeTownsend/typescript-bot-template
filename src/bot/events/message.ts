@@ -1,5 +1,5 @@
 import Event from '../struct/Event';
-import { Message, TextChannel, Guild } from 'discord.js';
+import { Message, TextChannel, Guild, Collection } from 'discord.js';
 import 'dotenv/config';
 
 abstract class MessageEvent extends Event {
@@ -51,6 +51,26 @@ abstract class MessageEvent extends Event {
         }
         if (command.requiredArgs && command.requiredArgs > args.length) {
           return message.channel.send(`Invalid usage of this command, please refer to \`${this.client.prefix}help ${command.name}\``);
+        }
+        if (command.cooldown) {
+          if (!this.client.cooldowns.has(command.name)) {
+            this.client.cooldowns.set(command.name, new Collection());
+          }
+          const now = Date.now();
+          const timestamps = this.client.cooldowns.get(command.name);
+          const cooldownAmount = command.cooldown * 1000;
+          if (timestamps?.has(message.author.id)) {
+            const cooldown = timestamps.get(message.author.id);
+            if (cooldown) {
+              const expirationTime = cooldown + cooldownAmount;
+              if (now < expirationTime) {
+                const timeLeft = (expirationTime - now) / 1000;
+                return message.channel.send(`Wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`);
+              }
+            }
+          }
+          timestamps?.set(message.author.id, now);
+          setTimeout(() => timestamps?.delete(message.author.id), cooldownAmount);
         }
         try {
           return command.exec(message, args);
