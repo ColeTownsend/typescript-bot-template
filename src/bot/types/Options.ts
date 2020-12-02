@@ -1,13 +1,16 @@
-import { PermissionString } from 'discord.js';
+import { PermissionString, Message } from 'discord.js';
 
 export interface CommandOptions {
   name: string,
   aliases?: string[],
-  description: any,
+  description: string,
   ownerOnly?: boolean,
   userPermissions?: PermissionString[],
   clientPermissions?: PermissionString[],
+  exec: (msg: Message, args: string[]) => unknown | Promise<unknown>,
 };
+
+export type CommandType = Omit<CommandOptions, 'exec'>;
 
 export interface EventOptions {
   name: string,

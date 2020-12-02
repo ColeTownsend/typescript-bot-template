@@ -9,6 +9,7 @@ const registerCommands: Function = (client: Bot) => {
     const command: Command = new (require(file).default);
     command.client = client;
     client.commands.set(command.name, command);
+    command.aliases.forEach((alias) => client.commands.set(alias, command));
   });
 }
 

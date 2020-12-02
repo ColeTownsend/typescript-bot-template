@@ -10,7 +10,7 @@ abstract class PingCommand extends Command {
     });
   }
 
-  exec(message: Message, args: string[]) {
+  exec(message: Message) {
     return message.reply('Pong!');
   }
 }

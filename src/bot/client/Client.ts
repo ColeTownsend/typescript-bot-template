@@ -1,13 +1,14 @@
-import { Client, Collection, Message } from 'discord.js';
+import { Client, Collection } from 'discord.js';
 import { CommandRegistry, EventRegistry } from '../struct/registries/export/RegistryIndex';
+import { CommandOptions, EventOptions } from '../types/Options';
 import 'dotenv/config';
 
 class Bot extends Client {
   public prefix: string;
 
-  public commands: Collection<string, object>;
+  public commands = new Collection<string, CommandOptions>();
 
-  public events: Collection<string, object>;
+  public events = new Collection<string, EventOptions>();
 
   public constructor() {
     super({
@@ -16,10 +17,6 @@ class Bot extends Client {
     });
 
     this.prefix = process.env.prefix ?? '!';
-
-    this.commands = new Collection();
-
-    this.events = new Collection();
   }
 
   public start() {

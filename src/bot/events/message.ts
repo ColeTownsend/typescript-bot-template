@@ -1,5 +1,5 @@
 import Event from '../struct/Event';
-import { Message, PermissionString, TextChannel } from 'discord.js';
+import { Message, TextChannel } from 'discord.js';
 import 'dotenv/config';
 
 abstract class MessageEvent extends Event {
@@ -11,19 +11,18 @@ abstract class MessageEvent extends Event {
 
   exec(message: Message) {
     if (!message.content.startsWith(this.client.prefix) || message.author.bot) return;
-    const args: string[] = message.content.split(/ +/);
-    const commandName: string = args[0].slice(this.client.prefix.length);
-    const command: any = this.client.commands.get(commandName) 
-      ?? this.client.commands.find((cmd: any) => cmd.aliases && cmd.aliases.includes(commandName));
+    const args = message.content.split(/ +/);
+    const commandName = args[0].slice(this.client.prefix.length);
+    const command = this.client.commands.get(commandName);
     if (command) {
       if (command.ownerOnly && message.author.id !== process.env.BOT_OWNER_ID) {
         return message.channel.send('This command can only be used by the owner of the bot.');
       }
       if (message.channel instanceof TextChannel) {
-        const userPermissions: PermissionString[] = command.userPermissions;
-        const clientPermissions: PermissionString[] = command.clientPermissions;
-        const missingPermissions: Array<PermissionString> = new Array;
-        if (userPermissions.length) {
+        const userPermissions = command.userPermissions;
+        const clientPermissions = command.clientPermissions;
+        const missingPermissions = new Array;
+        if (userPermissions?.length) {
           for (let i = 0; i < userPermissions.length; i++) {
             const hasPermission = message.member?.hasPermission(userPermissions[i]);
             if (!hasPermission) {
@@ -34,7 +33,7 @@ abstract class MessageEvent extends Event {
             return message.channel.send(`Your missing these required permissions: ${missingPermissions.join(', ')}`);
           }
         }
-        if (clientPermissions.length) {
+        if (clientPermissions?.length) {
           for (let i = 0; i < clientPermissions.length; i++) {
             const hasPermission = message.guild?.me?.hasPermission(clientPermissions[i]);
             if (!hasPermission) {
@@ -47,7 +46,7 @@ abstract class MessageEvent extends Event {
         }
       }
       try {
-        command.exec(message, args);
+        return command.exec(message, args);
       }
       catch (error) {
         console.log(error);

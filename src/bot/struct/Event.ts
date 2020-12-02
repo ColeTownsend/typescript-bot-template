@@ -14,7 +14,7 @@ abstract class Event {
     this.once = options.type ?? false;
   }
 
-  public abstract exec(...args: any[]): void;
+  public abstract exec(...args: any[]): unknown | Promise<unknown>;
 }
 
 export default Event;

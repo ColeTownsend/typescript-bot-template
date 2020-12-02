@@ -1,4 +1,4 @@
-import { CommandOptions } from '../types/Options';
+import { CommandType } from '../types/Options';
 import { Message, PermissionString } from 'discord.js';
 import Bot from '../client/Client';
 
@@ -7,7 +7,7 @@ abstract class Command {
 
   public aliases: string[];
 
-  public description: any;
+  public description: string;
 
   public ownerOnly: boolean;
 
@@ -17,12 +17,12 @@ abstract class Command {
 
   public abstract client: Bot;
 
-  constructor(options: CommandOptions) {
+  constructor(options: CommandType) {
     this.name = options.name;
 
     this.aliases = options.aliases ?? [];
 
-    this.description = options?.description;
+    this.description = options.description;
 
     this.ownerOnly = options.ownerOnly ?? false;
 
@@ -31,7 +31,7 @@ abstract class Command {
     this.clientPermissions = options.clientPermissions ?? [];
   }
 
-  public abstract exec(msg: Message, args: string[]): void;
+  public abstract exec(msg: Message, args: string[]): unknown | Promise<unknown>;
 }
 
 export default Command;
