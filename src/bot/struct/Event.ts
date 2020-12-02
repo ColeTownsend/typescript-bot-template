@@ -4,14 +4,14 @@ import Bot from '../client/Client'
 abstract class Event {
   public name: string;
 
-  public once: boolean;
+  public type: boolean;
 
   public abstract client: Bot;
 
   constructor(options: EventOptions) {
     this.name = options.name;
 
-    this.once = options.type ?? false;
+    this.type = options.once ?? false;
   }
 
   public abstract exec(...args: any[]): unknown | Promise<unknown>;

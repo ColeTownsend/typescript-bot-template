@@ -17,5 +17,5 @@ export type CommandType = Omit<CommandOptions, 'exec'>;
 
 export interface EventOptions {
   name: string,
-  type?: boolean,
+  once?: boolean,
 };
