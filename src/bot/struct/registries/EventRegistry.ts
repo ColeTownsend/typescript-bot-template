@@ -7,9 +7,10 @@ const registerEvents: Function = (client: Bot) => {
   const eventFiles = sync(resolve('src/bot/events/**/*'));
   eventFiles.forEach(file => {
     const event: Event = new (require(file).default);
+    console.log(event);
     event.client = client;
     client.events.set(event.name, event);
-    client.on(event.name, (...args: any[]) => event.exec(...args));
+    client[event.type ? 'once' : 'on'](event.name, (...args: any[]) => event.exec(...args));
   });
 }
 
