@@ -6,10 +6,12 @@ import { resolve } from 'path';
 const registerCommands: Function = (client: Bot) => {
   const commandFiles = sync(resolve('src/bot/commands/**/*'));
   commandFiles.forEach((file) => {
-    const command: Command = new (require(file).default);
-    command.client = client;
-    client.commands.set(command.name, command);
-    command.aliases.forEach((alias) => client.commands.set(alias, command));
+    if (/\.(j|t)s$/iu.test(file)) {
+      const command: Command = new (require(file).default);
+      command.client = client;
+      client.commands.set(command.name, command);
+      command.aliases.forEach((alias) => client.commands.set(alias, command));
+    }
   });
 }
 
