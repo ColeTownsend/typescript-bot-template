@@ -6,12 +6,16 @@ abstract class Event {
 
   public type: boolean;
 
+  public emitter: string;
+
   public abstract client: Bot;
 
   constructor(options: EventOptions) {
     this.name = options.name;
 
     this.type = options.once ?? false;
+
+    this.emitter = options.emitter ?? '';
   }
 
   public abstract exec(...args: any[]): unknown | Promise<unknown>;
