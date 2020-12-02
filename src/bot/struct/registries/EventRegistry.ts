@@ -7,10 +7,13 @@ const registerEvents: Function = (client: Bot) => {
   const eventFiles = sync(resolve('src/bot/events/**/*'));
   eventFiles.forEach((file) => {
     if (/\.(j|t)s$/iu.test(file)) {
-      const event: Event = new (require(file).default);
-      event.client = client;
-      client.events.set(event.name, event);
-      client[event.type ? 'once' : 'on'](event.name, (...args: any[]) => event.exec(...args));
+      const File = require(file).default;
+      if (File && File.prototype instanceof Event) {
+        const event: Event = new File;
+        event.client = client;
+        client.events.set(event.name, event);
+        client[event.type ? 'once' : 'on'](event.name, (...args: any[]) => event.exec(...args));
+      }
     }
   });
 }
