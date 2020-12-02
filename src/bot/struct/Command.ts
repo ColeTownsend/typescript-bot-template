@@ -7,6 +7,7 @@ abstract class Command {
   public aliases: string[];
   public description: string;
   public category: string;
+  public cooldown: number;
   public ownerOnly: boolean;
   public guildOnly: boolean;
   public requiredArgs: number;
@@ -19,6 +20,7 @@ abstract class Command {
     this.aliases = options.aliases ?? [];
     this.description = options.description;
     this.category = options.category ?? 'Misc';
+    this.cooldown = options.cooldown ?? 0;
     this.ownerOnly = options.ownerOnly ?? false;
     this.guildOnly = options.guildOnly ?? false;
     this.requiredArgs = options.requiredArgs ?? 0;
