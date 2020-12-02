@@ -1,5 +1,5 @@
 import Event from '../struct/Event';
-import { Message, TextChannel } from 'discord.js';
+import { Message, TextChannel, Guild } from 'discord.js';
 import 'dotenv/config';
 
 abstract class MessageEvent extends Event {
@@ -17,6 +17,9 @@ abstract class MessageEvent extends Event {
     if (command) {
       if (command.ownerOnly && message.author.id !== process.env.BOT_OWNER_ID) {
         return message.channel.send('This command can only be used by the owner of the bot.');
+      }
+      else if (command.guildOnly && !(message.guild instanceof Guild)) {
+        return message.channel.send('This command can only be used in a guild.');
       }
       if (message.channel instanceof TextChannel) {
         const userPermissions = command.userPermissions;
