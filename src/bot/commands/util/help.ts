@@ -17,6 +17,7 @@ abstract class HelpCommand extends Command {
       const embed = new MessageEmbed().setColor('BLUE');
       embed.setDescription(stripIndents(`
         **Name:** ${command.name}
+        **Usage:** ${command.usage ? command.usage : 'None'}
         **Aliases:** ${command.aliases?.length ? command.aliases.join(', ') : 'None'}
         **Description:** ${command.description}
       `))
