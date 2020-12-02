@@ -9,6 +9,8 @@ abstract class Command {
 
   public description: string;
 
+  public category: string;
+
   public ownerOnly: boolean;
 
   public guildOnly: boolean;
@@ -27,6 +29,8 @@ abstract class Command {
     this.aliases = options.aliases ?? [];
 
     this.description = options.description;
+
+    this.category = options.category ?? 'Misc';
 
     this.ownerOnly = options.ownerOnly ?? false;
 
