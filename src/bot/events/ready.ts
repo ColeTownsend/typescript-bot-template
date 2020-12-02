@@ -4,6 +4,7 @@ abstract class ReadyEvent extends Event {
   constructor() {
     super({
       name: 'ready',
+      once: true,
     });
   }
 
