@@ -48,6 +48,9 @@ abstract class MessageEvent extends Event {
           }
         }
       }
+      if (command.requiredArgs && command.requiredArgs > args.length) {
+        return message.channel.send(`Invalid usage of this command, please refer to \`${this.client.prefix}help ${command.name}\``);
+      }
       try {
         return command.exec(message, args);
       }
