@@ -28,7 +28,7 @@ abstract class Command {
 
     this.ownerOnly = options.ownerOnly ?? false;
 
-    this.guildOnly = options.guildOwner ?? false;
+    this.guildOnly = options.guildOnly ?? false;
 
     this.userPermissions = options.userPermissions ?? [];
 
