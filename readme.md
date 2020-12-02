@@ -11,7 +11,7 @@
 - Go to the file `./src/bot/settings.ts` and fill out the values
 ## Scripts
 - `yarn dev` - runs the development version (used `ts-node-dev` to hot-reload new changes)
-- `yarn build` - complies to TypeCcript files into JavaScript.
+- `yarn build` - complies to TypeScript files into JavaScript.
 ## Features
 - Command Handling
 - Event Handling
