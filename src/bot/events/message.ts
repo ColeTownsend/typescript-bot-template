@@ -57,7 +57,7 @@ abstract class MessageEvent extends Event {
         }
         catch (error) {
           console.log(error);
-          message.reply('there was an error running this command.')
+          message.reply('there was an error running this command.');
         }
       }
     }
