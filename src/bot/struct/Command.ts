@@ -6,6 +6,7 @@ abstract class Command {
   public name: string;
   public aliases: string[];
   public description: string;
+  public usage: string;
   public category: string;
   public cooldown: number;
   public ownerOnly: boolean;
@@ -19,6 +20,7 @@ abstract class Command {
     this.name = options.name;
     this.aliases = options.aliases ?? [];
     this.description = options.description;
+    this.usage = options.usage ?? '';
     this.category = options.category ?? 'Misc';
     this.cooldown = options.cooldown ?? 0;
     this.ownerOnly = options.ownerOnly ?? false;
