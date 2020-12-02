@@ -4,6 +4,7 @@ export interface CommandOptions {
   name: string,
   aliases?: string[],
   description: string,
+  usage?: string,
   category?: string,
   cooldown?: number,
   ownerOnly?: boolean,
