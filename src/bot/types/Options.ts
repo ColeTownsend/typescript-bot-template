@@ -5,6 +5,7 @@ export interface CommandOptions {
   aliases?: string[],
   description: string,
   category?: string,
+  cooldown?: number,
   ownerOnly?: boolean,
   guildOnly?: boolean,
   requiredArgs?: number,
