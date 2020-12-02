@@ -1,7 +1,7 @@
 import { Client, Collection } from 'discord.js';
 import { CommandRegistry, EventRegistry } from '../struct/registries/export/RegistryIndex';
 import { CommandOptions, EventOptions } from '../types/Options';
-import 'dotenv/config';
+import settings from '../settings';
 
 class Bot extends Client {
   public prefix: string;
@@ -18,13 +18,13 @@ class Bot extends Client {
       disableMentions: 'everyone',
     });
 
-    this.prefix = process.env.prefix ?? '!';
+    this.prefix = settings.PREFIX;
   }
 
   public start() {
     CommandRegistry(this);
     EventRegistry(this);
-    super.login(process.env.BOT_TOKEN);
+    super.login(settings.BOT_TOKEN);
   }
 }
 

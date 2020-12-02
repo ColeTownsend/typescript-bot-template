@@ -1,6 +1,6 @@
 import Event from '../struct/Event';
 import { Message, TextChannel, Guild, Collection } from 'discord.js';
-import 'dotenv/config';
+import settings from '../settings';
 
 abstract class MessageEvent extends Event {
   constructor() {
@@ -16,7 +16,7 @@ abstract class MessageEvent extends Event {
     if (commandName) {
       const command = this.client.commands.get(commandName);
       if (command) {
-        if (command.ownerOnly && message.author.id !== process.env.BOT_OWNER_ID) {
+        if (command.ownerOnly && !settings.BOT_OWNER_ID.includes(message.author.id)) {
           return message.channel.send('This command can only be used by the owner of the bot.');
         }
         else if (command.guildOnly && !(message.guild instanceof Guild)) {
