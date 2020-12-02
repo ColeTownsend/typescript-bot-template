@@ -5,6 +5,7 @@ export interface CommandOptions {
   aliases?: string[],
   description: string,
   ownerOnly?: boolean,
+  guildOwner?: boolean,
   userPermissions?: PermissionString[],
   clientPermissions?: PermissionString[],
   exec: (msg: Message, args: string[]) => unknown | Promise<unknown>,

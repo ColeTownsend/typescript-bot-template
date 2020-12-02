@@ -11,6 +11,8 @@ abstract class Command {
 
   public ownerOnly: boolean;
 
+  public guildOnly: boolean;
+
   public userPermissions: PermissionString[];
 
   public clientPermissions: PermissionString[];
@@ -25,6 +27,8 @@ abstract class Command {
     this.description = options.description;
 
     this.ownerOnly = options.ownerOnly ?? false;
+
+    this.guildOnly = options.guildOwner ?? false;
 
     this.userPermissions = options.userPermissions ?? [];
 
