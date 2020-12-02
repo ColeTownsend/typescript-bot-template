@@ -8,6 +8,8 @@ class Bot extends Client {
 
   public commands = new Collection<string, CommandOptions>();
 
+  public cooldowns = new Collection<string, number>();
+
   public events = new Collection<string, EventOptions>();
 
   public constructor() {
