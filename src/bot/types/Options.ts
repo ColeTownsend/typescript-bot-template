@@ -6,6 +6,7 @@ export interface CommandOptions {
   description: string,
   ownerOnly?: boolean,
   guildOnly?: boolean,
+  requiredArgs?: number,
   userPermissions?: PermissionString[],
   clientPermissions?: PermissionString[],
   exec: (msg: Message, args: string[]) => unknown | Promise<unknown>,
