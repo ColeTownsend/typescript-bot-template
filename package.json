@@ -18,6 +18,7 @@
     "typescript": "^4.1.2"
   },
   "dependencies": {
+    "@types/common-tags": "^1.8.0",
     "common-tags": "^1.8.0",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
