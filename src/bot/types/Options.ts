@@ -1,4 +1,5 @@
 import { PermissionString, Message } from 'discord.js';
+import Bot from '../client/Client';
 
 export interface CommandOptions {
   name: string,
@@ -18,4 +19,5 @@ export type CommandType = Omit<CommandOptions, 'exec'>;
 export interface EventOptions {
   name: string,
   once?: boolean,
+  emitter?: string | Bot,
 };
