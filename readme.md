@@ -15,6 +15,7 @@
 ## Features
 - Command Handling
 - Event Handling
+- Pre-coded Help Command
 - Allow Sub Folders For Commands/Events
 - Command Aliases
 - Command Cooldowns
